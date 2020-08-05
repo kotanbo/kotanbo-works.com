@@ -1,18 +1,45 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
 
 import Gallery from '../components/Gallery'
 import Layout from '../components/layout'
+import GithubItems, { RepositoryItem } from '../components/GithubItems'
 
-const HomeIndex: React.FC = () => {
-  const siteTitle = `Gatsby Starter - Strata`
-  const siteDescription = `Site description`
+type User = {
+  github: string
+}
+
+type Props = {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+        description: string
+        user: User
+      }
+    }
+    githubData: {
+      data: {
+        user: {
+          repositories: {
+            edges: RepositoryItem[]
+          }
+        }
+      }
+    }
+  }
+}
+
+const HomeIndex: React.FC<Props> = ({ data }) => {
+  const { title, description, user } = data.site.siteMetadata
+  const repositoryItems = data.githubData.data.user.repositories.edges
 
   return (
     <Layout>
       <Helmet>
-        <title>{siteTitle}</title>
-        <meta name="description" content={siteDescription} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
       </Helmet>
 
       <div id="main">
@@ -38,6 +65,10 @@ const HomeIndex: React.FC = () => {
             </li>
           </ul>
         </section>
+
+        {repositoryItems && repositoryItems.length > 0 && (
+          <GithubItems repositoryItems={repositoryItems} userName={user.github} />
+        )}
 
         <section id="two">
           <h2>Recent Work</h2>
@@ -114,3 +145,33 @@ const HomeIndex: React.FC = () => {
 }
 
 export default HomeIndex
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+        user {
+          github
+        }
+      }
+    }
+    githubData {
+      data {
+        user {
+          repositories {
+            edges {
+              node {
+                id
+                name
+                description
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
