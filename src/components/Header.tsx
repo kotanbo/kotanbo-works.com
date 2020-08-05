@@ -3,7 +3,7 @@ import React from 'react'
 import Footer from './Footer'
 import avatar from '../assets/images/avatar.jpg'
 
-const Header = () => (
+const Header: React.FC = () => (
   <header id="header">
     <div className="inner">
       <a href="#" className="image avatar">

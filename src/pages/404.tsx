@@ -1,8 +1,7 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 
-const NotFoundPage = () => (
+const NotFoundPage: React.FC = () => (
   <Layout>
     <div id="main">
       <h1>NOT FOUND</h1>

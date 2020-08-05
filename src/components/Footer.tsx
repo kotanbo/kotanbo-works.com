@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <div id="footer">
     <div className="inner">
       <ul className="icons">
