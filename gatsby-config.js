@@ -7,6 +7,7 @@ const siteMetadata = {
   description: `A Gatsby.js Starter based on Strata by HTML5 UP`,
   user: {
     github: `kotanbo`,
+    qiita: `kotanbo`,
   },
 }
 module.exports = {
@@ -50,6 +51,14 @@ module.exports = {
           userFirst: 100,
           author: `kotanbo`,
         },
+      },
+    },
+    {
+      resolve: `gatsby-source-qiita`,
+      options: {
+        accessToken: process.env.QIITA_API_TOKEN,
+        userName: siteMetadata.user.qiita,
+        fetchPrivate: false,
       },
     },
   ],

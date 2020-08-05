@@ -5,9 +5,11 @@ import { graphql } from 'gatsby'
 import Gallery from '../components/Gallery'
 import Layout from '../components/layout'
 import GithubItems, { RepositoryItem } from '../components/GithubItems'
+import QiitaItems, { QiitaPostItem } from '../components/QiitaItems'
 
 type User = {
   github: string
+  qiita: string
 }
 
 type Props = {
@@ -28,12 +30,16 @@ type Props = {
         }
       }
     }
+    allQiitaPost: {
+      edges: QiitaPostItem[]
+    }
   }
 }
 
 const HomeIndex: React.FC<Props> = ({ data }) => {
   const { title, description, user } = data.site.siteMetadata
   const repositoryItems = data.githubData.data.user.repositories.edges
+  const qiitaPostItems = data.allQiitaPost.edges
 
   return (
     <Layout>
@@ -69,6 +75,7 @@ const HomeIndex: React.FC<Props> = ({ data }) => {
         {repositoryItems && repositoryItems.length > 0 && (
           <GithubItems repositoryItems={repositoryItems} userName={user.github} />
         )}
+        {qiitaPostItems && qiitaPostItems.length > 0 && <QiitaItems postItems={qiitaPostItems} userName={user.qiita} />}
 
         <section id="two">
           <h2>Recent Work</h2>
@@ -154,6 +161,7 @@ export const query = graphql`
         description
         user {
           github
+          qiita
         }
       }
     }
@@ -170,6 +178,15 @@ export const query = graphql`
               }
             }
           }
+        }
+      }
+    }
+    allQiitaPost {
+      edges {
+        node {
+          id
+          title
+          url
         }
       }
     }
