@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import Gallery from '../components/Gallery'
 import Layout from '../components/layout'
-import GithubItems, { RepositoryItem } from '../components/GithubItems'
+import GithubItems, { GithubRepositoryItem } from '../components/GithubItems'
 import QiitaItems, { QiitaPostItem } from '../components/QiitaItems'
 
 type User = {
@@ -25,7 +25,7 @@ type Props = {
       data: {
         user: {
           repositories: {
-            edges: RepositoryItem[]
+            edges: GithubRepositoryItem[]
           }
         }
       }
@@ -38,7 +38,7 @@ type Props = {
 
 const HomeIndex: React.FC<Props> = ({ data }) => {
   const { title, description, user } = data.site.siteMetadata
-  const repositoryItems = data.githubData.data.user.repositories.edges
+  const githubRepositoryItems = data.githubData.data.user.repositories.edges
   const qiitaPostItems = data.allQiitaPost.edges
 
   return (
@@ -72,8 +72,8 @@ const HomeIndex: React.FC<Props> = ({ data }) => {
           </ul>
         </section>
 
-        {repositoryItems && repositoryItems.length > 0 && (
-          <GithubItems repositoryItems={repositoryItems} userName={user.github} />
+        {githubRepositoryItems && githubRepositoryItems.length > 0 && (
+          <GithubItems repositoryItems={githubRepositoryItems} userName={user.github} />
         )}
         {qiitaPostItems && qiitaPostItems.length > 0 && <QiitaItems postItems={qiitaPostItems} userName={user.qiita} />}
 
