@@ -49,7 +49,7 @@ module.exports = {
         }`,
         variables: {
           userFirst: 100,
-          author: `kotanbo`,
+          author: siteMetadata.user.github,
         },
       },
     },

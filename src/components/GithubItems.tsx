@@ -1,6 +1,6 @@
 import React from 'react'
 
-export type RepositoryItem = {
+export type GithubRepositoryItem = {
   node: {
     id: string
     url: string
@@ -10,7 +10,7 @@ export type RepositoryItem = {
 }
 
 type Props = {
-  repositoryItems: RepositoryItem[]
+  repositoryItems: GithubRepositoryItem[]
   userName: string
 }
 
