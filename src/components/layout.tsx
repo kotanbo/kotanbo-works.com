@@ -3,7 +3,7 @@ import '../assets/scss/main.scss'
 
 import Header from './Header'
 
-const Template = ({ children }) => (
+const Template: React.FC = ({ children }) => (
   <div>
     <Header />
     {children}
