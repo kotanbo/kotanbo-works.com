@@ -1,17 +1,8 @@
 import React from 'react'
 import Helmet, { HelmetProps } from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
+import { useSiteMetadata } from '../hooks'
 
-type Site = {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
-      siteUrl: string
-      siteLanguage: string
-    }
-  }
-}
 type Avatar = {
   avatar: {
     publicURL: string
@@ -19,22 +10,15 @@ type Avatar = {
 }
 
 const Head: React.FC<HelmetProps> = () => {
-  const data = useStaticQuery<Site & Avatar>(graphql`
-    {
-      site {
-        siteMetadata {
-          title
-          description
-          siteUrl
-          siteLanguage
-        }
-      }
+  const siteMetadata = useSiteMetadata()
+  const data = useStaticQuery<Avatar>(graphql`
+    query {
       avatar: file(relativePath: { eq: "avatar.jpg" }) {
         publicURL
       }
     }
   `)
-  const { title, description, siteUrl, siteLanguage } = data.site.siteMetadata
+  const { title, description, siteUrl, siteLanguage } = siteMetadata
   const avatarAbsoluteUrl = siteUrl + data.avatar.publicURL
 
   return (

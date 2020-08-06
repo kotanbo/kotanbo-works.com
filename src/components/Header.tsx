@@ -1,20 +1,10 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img, { FixedObject } from 'gatsby-image'
+import { useSiteMetadata } from '../hooks'
 
 import Footer from './Footer'
 
-type Site = {
-  site: {
-    siteMetadata: {
-      user: {
-        name: string
-        mail: string
-        github: string
-      }
-    }
-  }
-}
 type Avatar = {
   avatar: {
     childImageSharp: {
@@ -24,17 +14,10 @@ type Avatar = {
 }
 
 const Header: React.FC = () => {
-  const data = useStaticQuery<Site & Avatar>(graphql`
+  const siteMetadata = useSiteMetadata()
+  const user = siteMetadata.user
+  const data = useStaticQuery<Avatar>(graphql`
     query {
-      site {
-        siteMetadata {
-          user {
-            name
-            mail
-            github
-          }
-        }
-      }
       avatar: file(relativePath: { eq: "avatar.jpg" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
@@ -44,7 +27,6 @@ const Header: React.FC = () => {
       }
     }
   `)
-  const user = data.site.siteMetadata.user
 
   return (
     <header id="header">
@@ -56,7 +38,7 @@ const Header: React.FC = () => {
           <strong>{user.name}</strong>
         </h1>
       </div>
-      <Footer user={user} />
+      <Footer />
     </header>
   )
 }
