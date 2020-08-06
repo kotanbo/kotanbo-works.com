@@ -8,6 +8,7 @@ import GithubItems, { GithubRepositoryItem } from '../components/GithubItems'
 import QiitaItems, { QiitaPostItem } from '../components/QiitaItems'
 
 type User = {
+  name: string
   github: string
   qiita: string
 }
@@ -49,27 +50,17 @@ const HomeIndex: React.FC<Props> = ({ data }) => {
       </Helmet>
 
       <div id="main">
-        <section id="one">
-          <header className="major">
-            <h2>
-              Ipsum lorem dolor aliquam ante commodo
-              <br />
-              magna sed accumsan arcu neque.
-            </h2>
-          </header>
+        <section id="about">
+          <h2>About {user.name}</h2>
+          <p>主に和歌山で活動しているフリーランスのエンジニアです。</p>
           <p>
-            Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac
-            in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo
-            blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem
-            vulputate lorem neque cubilia.
+            組み込み（携帯電話）、Web系・業務系システム、スマホアプリ（iOS、Android）開発に従事してきましたが、最近はバックエンド
+            Laravel または ASP.NET、フロントエンド Vue.js
+            辺りを使って小規模Web系システムの開発をやっていることが多いです。
           </p>
-          <ul className="actions">
-            <li>
-              <a href="#" className="button">
-                Learn More
-              </a>
-            </li>
-          </ul>
+          <p>
+            Webサービス、アプリを作ろうと思ったりする今日この頃ですが、機械学習に興味が湧き、数学の勉強をやり直しています。
+          </p>
         </section>
 
         {githubRepositoryItems && githubRepositoryItems.length > 0 && (
@@ -77,74 +68,9 @@ const HomeIndex: React.FC<Props> = ({ data }) => {
         )}
         {qiitaPostItems && qiitaPostItems.length > 0 && <QiitaItems postItems={qiitaPostItems} userName={user.qiita} />}
 
-        <section id="two">
-          <h2>Recent Work</h2>
-
+        <section id="gallery">
+          <h2>Recent Nomad</h2>
           <Gallery />
-
-          <ul className="actions">
-            <li>
-              <a href="#" className="button">
-                Full Portfolio
-              </a>
-            </li>
-          </ul>
-        </section>
-
-        <section id="three">
-          <h2>Get In Touch</h2>
-          <p>
-            Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu
-            lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.
-          </p>
-          <div className="row">
-            <div className="8u 12u$(small)">
-              <form method="post" action="#">
-                <div className="row uniform 50%">
-                  <div className="6u 12u$(xsmall)">
-                    <input type="text" name="name" id="name" placeholder="Name" />
-                  </div>
-                  <div className="6u 12u$(xsmall)">
-                    <input type="email" name="email" id="email" placeholder="Email" />
-                  </div>
-                  <div className="12u">
-                    <textarea name="message" id="message" placeholder="Message" rows={4}></textarea>
-                  </div>
-                </div>
-                <ul className="actions" style={{ marginTop: 30 }}>
-                  <li>
-                    <input type="submit" value="Send Message" />
-                  </li>
-                </ul>
-              </form>
-            </div>
-            <div className="4u 12u$(small)">
-              <ul className="labeled-icons">
-                <li>
-                  <h3 className="icon fa-home">
-                    <span className="label">Address</span>
-                  </h3>
-                  1234 Somewhere Rd.
-                  <br />
-                  Nashville, TN 00000
-                  <br />
-                  United States
-                </li>
-                <li>
-                  <h3 className="icon fa-mobile">
-                    <span className="label">Phone</span>
-                  </h3>
-                  000-000-0000
-                </li>
-                <li>
-                  <h3 className="icon fa-envelope-o">
-                    <span className="label">Email</span>
-                  </h3>
-                  <a href="#">hello@untitled.tld</a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </section>
       </div>
     </Layout>
@@ -160,6 +86,7 @@ export const query = graphql`
         title
         description
         user {
+          name
           github
           qiita
         }

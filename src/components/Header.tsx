@@ -1,24 +1,64 @@
 import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import Img, { FixedObject } from 'gatsby-image'
 
 import Footer from './Footer'
-import avatar from '../assets/images/avatar.jpg'
 
-const Header: React.FC = () => (
-  <header id="header">
-    <div className="inner">
-      <a href="#" className="image avatar">
-        <img src={avatar} alt="" />
-      </a>
-      <h1>
-        <strong>I am Strata</strong>, a super simple
-        <br />
-        responsive site template freebie
-        <br />
-        crafted by <a href="http://html5up.net">HTML5 UP</a>.
-      </h1>
-    </div>
-    <Footer />
-  </header>
-)
+type Site = {
+  site: {
+    siteMetadata: {
+      user: {
+        name: string
+        mail: string
+        github: string
+      }
+    }
+  }
+}
+type Avatar = {
+  avatar: {
+    childImageSharp: {
+      fixed: FixedObject
+    }
+  }
+}
+
+const Header: React.FC = () => {
+  const data = useStaticQuery<Site & Avatar>(graphql`
+    query {
+      site {
+        siteMetadata {
+          user {
+            name
+            mail
+            github
+          }
+        }
+      }
+      avatar: file(relativePath: { eq: "avatar.jpg" }) {
+        childImageSharp {
+          fixed(width: 100, height: 100) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+  const user = data.site.siteMetadata.user
+
+  return (
+    <header id="header">
+      <div className="inner">
+        <a href="#" className="image avatar">
+          <Img fixed={data.avatar.childImageSharp.fixed} />
+        </a>
+        <h1>
+          <strong>{user.name}</strong>
+        </h1>
+      </div>
+      <Footer user={user} />
+    </header>
+  )
+}
 
 export default Header

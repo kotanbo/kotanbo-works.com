@@ -2,12 +2,16 @@
 require(`dotenv`).config()
 
 const siteMetadata = {
-  title: `Gatsby Starter - Strata by HTML5 UP`,
-  author: `Hunter Chang`,
-  description: `A Gatsby.js Starter based on Strata by HTML5 UP`,
+  title: `KOTANBO WORKS`,
+  description: `主に和歌山で活動しているフリーランスのエンジニアです。`,
   user: {
+    name: `KOTANBO WORKS`,
+    mail: `contact@kotanbo-works.com`,
     github: `kotanbo`,
     qiita: `kotanbo`,
+  },
+  gallery: {
+    directory_name: `nomad`,
   },
 }
 module.exports = {
@@ -17,8 +21,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: siteMetadata.title,
+        short_name: siteMetadata.title,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -26,6 +30,15 @@ module.exports = {
         icon: `src/assets/images/website-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-offline`,
     {
