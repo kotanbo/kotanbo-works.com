@@ -1,18 +1,58 @@
-# gatsby-starter-strata
+# kotanbo-works.com
 
-**This is a starter for Gatsby.js V2.**
+## :arrow_forward: Usage
 
-**The older V1 version of this starter can be found on the v1 branch**
+### Create a new site
+```
+$ npm install -g gatsby-cli
+$ gatsby new kotanbo-works https://github.com/kotanbo/kotanbo-works.com
+```
 
-Gatsby starter based on the Strata site template, designed by [HTML5 UP](https://html5up.net/strata). Check out https://codebushi.com/gatsby-starters-and-themes/ for more Gatsby starters and templates.
+### Develop the site locally
+Add the `GH_API_TOKEN` and `QIITA_API_TOKEN` to `.env`.
 
-## Preview
+```
+GH_API_TOKEN = xxxxxxxxxx
+QIITA_API_TOKEN = xxxxxxxxxx
+```
 
-http://gatsby-strata.surge.sh/
+```bash
+$ yarn install
+$ yarn develop
+```
 
-## Installation
+Open at `http://localhost:8000` in the browser.
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-`gatsby new gatsby-starter-strata https://github.com/codebushi/gatsby-starter-strata`
+## :rocket: Deploy
 
-Run `gatsby develop` in the terminal to start.
+### Deploy to GitHub Pages using GitHub Actions
+
+Add the `pathPrefix` to `gatsby-config.js`.
+
+```js
+module.exports = {
+  pathPrefix: `/repo-name`,
+}
+```
+
+Update the build script to `package.json`.
+
+```diff
+-"build": "gatsby build",
++"build": "gatsby build --prefix-paths",
+```
+
+Add secrets to repository settings.
+
+- **GT_API_TOKEN**
+  - Use for fetch repository data from GitHub.
+  - Scope: `public_repo`
+- **QIITA_API_TOKEN**
+  - Use for fetch article data from Qiita.
+  - Scope: `read_qiita`
+
+Create the workflow file like `gh-pages.yml` and add it to `.github/workflows`. 
+Push your changes to the master branch and start the build for deploy to GitHub Pages.
+
+## :memo: Licence
+MIT

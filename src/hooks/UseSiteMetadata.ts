@@ -22,6 +22,7 @@ type SiteMetadata = DeepReadonly<{
     directoryName: string
   }
   backgroundColor: string
+  googleSiteVerification: string
 }>
 
 const useSiteMetadata = (): SiteMetadata => {
