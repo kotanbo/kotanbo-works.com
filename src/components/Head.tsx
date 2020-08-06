@@ -37,6 +37,7 @@ const Head: React.FC<HelmetProps> = () => {
       <meta name="twitter:url" content={siteUrl}></meta>
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={avatarAbsoluteUrl} />
+      <meta name="google-site-verification" content={siteMetadata.googleSiteVerification} data-react-helmet="true" />
     </Helmet>
   )
 }
