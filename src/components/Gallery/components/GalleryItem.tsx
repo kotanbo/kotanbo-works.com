@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react'
+import Img, { FluidObject } from 'gatsby-image'
 
 type Props = {
   id: string
   source: string
-  thumbnail: string
+  thumbnail: string | FluidObject
   caption: string
   description: string
   position: string
@@ -22,7 +23,7 @@ const GalleryItem: React.FC<Props> = ({ id, source, thumbnail, caption, descript
   return (
     <article key={id} className="6u 12u$(xsmall) work-item">
       <a className="image fit thumb" href={source} onClick={onClick}>
-        <img src={thumbnail} />
+        {typeof thumbnail === `string` ? <img src={thumbnail} /> : <Img fluid={thumbnail} />}
       </a>
 
       <h3>{caption}</h3>
