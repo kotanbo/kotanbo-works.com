@@ -8,7 +8,7 @@ type Site = {
   site: {
     siteMetadata: {
       gallery: {
-        directory_name: string
+        directoryName: string
       }
     }
   }
@@ -44,7 +44,7 @@ const Gallery: React.FC = () => {
       site {
         siteMetadata {
           gallery {
-            directory_name
+            directoryName
           }
         }
       }
@@ -65,7 +65,7 @@ const Gallery: React.FC = () => {
   `)
 
   const images = data.images.edges.filter((edge) =>
-    edge.node.relativePath.includes(data.site.siteMetadata.gallery.directory_name)
+    edge.node.relativePath.includes(data.site.siteMetadata.gallery.directoryName)
   )
   const views = images.map((obj) => {
     return { caption: ``, source: obj.node.publicURL }

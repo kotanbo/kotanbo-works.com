@@ -4,6 +4,8 @@ require(`dotenv`).config()
 const siteMetadata = {
   title: `KOTANBO WORKS`,
   description: `主に和歌山で活動しているフリーランスのエンジニアです。`,
+  siteUrl: `https://kotanbo-works.com`,
+  siteLanguage: `ja`,
   user: {
     name: `KOTANBO WORKS`,
     mail: `contact@kotanbo-works.com`,
@@ -11,8 +13,9 @@ const siteMetadata = {
     qiita: `kotanbo`,
   },
   gallery: {
-    directory_name: `nomad`,
+    directoryName: `nomad`,
   },
+  backgroundColor: `#283941`,
 }
 module.exports = {
   siteMetadata,
@@ -24,8 +27,8 @@ module.exports = {
         name: siteMetadata.title,
         short_name: siteMetadata.title,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: siteMetadata.backgroundColor,
+        theme_color: siteMetadata.backgroundColor,
         display: `minimal-ui`,
         icon: `src/assets/images/website-icon.png`, // This path is relative to the root of the site.
       },
@@ -72,6 +75,12 @@ module.exports = {
         accessToken: process.env.QIITA_API_TOKEN,
         userName: siteMetadata.user.qiita,
         fetchPrivate: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-161591524-1`,
       },
     },
   ],
