@@ -44,6 +44,7 @@ const useSiteMetadata = (): SiteMetadata => {
             directoryName
           }
           backgroundColor
+          googleSiteVerification
         }
       }
     }
