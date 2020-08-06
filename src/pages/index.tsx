@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import Gallery from '../components/Gallery'
@@ -38,17 +37,12 @@ type Props = {
 }
 
 const HomeIndex: React.FC<Props> = ({ data }) => {
-  const { title, description, user } = data.site.siteMetadata
+  const { user } = data.site.siteMetadata
   const githubRepositoryItems = data.githubData.data.user.repositories.edges
   const qiitaPostItems = data.allQiitaPost.edges
 
   return (
     <Layout>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
-
       <div id="main">
         <section id="about">
           <h2>About {user.name}</h2>
