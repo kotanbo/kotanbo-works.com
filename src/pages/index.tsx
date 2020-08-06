@@ -1,26 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Gallery from '../components/Gallery'
+import { useSiteMetadata } from '../hooks'
 import Layout from '../components/layout'
 import GithubItems, { GithubRepositoryItem } from '../components/GithubItems'
 import QiitaItems, { QiitaPostItem } from '../components/QiitaItems'
-
-type User = {
-  name: string
-  github: string
-  qiita: string
-}
+import Gallery from '../components/Gallery'
 
 type Props = {
   data: {
-    site: {
-      siteMetadata: {
-        title: string
-        description: string
-        user: User
-      }
-    }
     githubData: {
       data: {
         user: {
@@ -37,7 +25,8 @@ type Props = {
 }
 
 const HomeIndex: React.FC<Props> = ({ data }) => {
-  const { user } = data.site.siteMetadata
+  const siteMetadata = useSiteMetadata()
+  const { user } = siteMetadata
   const githubRepositoryItems = data.githubData.data.user.repositories.edges
   const qiitaPostItems = data.allQiitaPost.edges
 
@@ -75,17 +64,6 @@ export default HomeIndex
 
 export const query = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-        description
-        user {
-          name
-          github
-          qiita
-        }
-      }
-    }
     githubData {
       data {
         user {
