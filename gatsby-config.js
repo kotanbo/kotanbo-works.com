@@ -16,6 +16,7 @@ const siteMetadata = {
     directoryName: `nomad`,
   },
   backgroundColor: `#283941`,
+  googleSiteVerification: `1fkhj6Pq7vJEir8glR08MkVxiGyNnyTGSLPnUpyoEkY`,
 }
 module.exports = {
   siteMetadata,
