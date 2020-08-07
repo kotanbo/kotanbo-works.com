@@ -1,5 +1,6 @@
 import React from 'react'
 import '../assets/scss/main.scss'
+import './layout.module.css'
 
 import Head from './Head'
 import Header from './Header'

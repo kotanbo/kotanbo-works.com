@@ -2,7 +2,7 @@ name: lighthouse
 
 on:
   schedule:
-    - cron: '30 4 * * *'
+    - cron: '0 0 * * 0'
 
 jobs:
   test:
