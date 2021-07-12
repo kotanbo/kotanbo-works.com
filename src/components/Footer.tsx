@@ -22,9 +22,6 @@ const Footer: React.FC = () => {
         </ul>
         <ul className="copyright">
           <li>
-            &copy; {new Date().getFullYear()} {user.name}
-          </li>
-          <li>
             Design: <a href="http://html5up.net">HTML5 UP</a>
           </li>
         </ul>
