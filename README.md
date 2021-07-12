@@ -44,7 +44,7 @@ Update the build script to `package.json`.
 
 Add secrets to repository settings.
 
-- **GT_API_TOKEN**
+- **GH_API_TOKEN**
   - Use for fetch repository data from GitHub.
   - Scope: `public_repo`
 - **QIITA_API_TOKEN**
