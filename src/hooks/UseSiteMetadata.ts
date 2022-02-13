@@ -14,7 +14,7 @@ type SiteMetadata = DeepReadonly<{
   siteLanguage: string
   user: {
     name: string
-    mail: string
+    contact: string
     github: string
     qiita: string
   }
@@ -35,7 +35,7 @@ const useSiteMetadata = (): SiteMetadata => {
           siteLanguage
           user {
             name
-            mail
+            contact
             github
             qiita
           }

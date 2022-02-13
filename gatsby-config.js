@@ -8,7 +8,7 @@ const siteMetadata = {
   siteLanguage: `ja`,
   user: {
     name: `KOTANBO WORKS`,
-    mail: `contact@kotanbo-works.com`,
+    contact: `https://docs.google.com/forms/d/e/1FAIpQLScYV-121hJ47O_whY2zF_4J3VLVgDAxNN1yWhuZgADQjb7rJA/viewform?usp=sf_link`,
     github: `kotanbo`,
     qiita: `kotanbo`,
   },

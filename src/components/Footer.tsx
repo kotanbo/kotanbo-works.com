@@ -15,8 +15,8 @@ const Footer: React.FC = () => {
             </a>
           </li>
           <li>
-            <a href={`mailto:${user.mail}`} className="icon fa-envelope-o">
-              <span className="label">Email</span>
+            <a href={`${user.contact}`} className="icon fa-envelope-o">
+              <span className="label">Contact</span>
             </a>
           </li>
         </ul>
