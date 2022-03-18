@@ -16,11 +16,11 @@
     "gatsby-source-github-api": "^0.2.1",
     "gatsby-source-qiita": "^1.2.4",
     "gatsby-transformer-sharp": "^2.5.12",
-    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
-    "react-images": "^1.0.0"
+    "react-images": "^1.0.0",
+    "sass": "^1.49.9"
   },
   "keywords": [
     "gatsby"
