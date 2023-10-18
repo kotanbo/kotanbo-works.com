@@ -1,16 +1,10 @@
-// @ts-check
-
-/**
- * @type {import('next').NextConfig}
- **/
-const nextConfig = {
+/** @type {import('next').NextConfig} */
+module.exports = {
   output: 'export',
   experimental: {
-    appDir: true,
+    appDir: true
   },
   images: {
-    unoptimized: true,
-  },
-}
-
-module.exports = nextConfig
+    unoptimized: true
+  }
+};
