@@ -1,71 +1,56 @@
-import { Metadata } from 'next'
-import Image from 'next/image'
-import { siteMetadata } from './constants'
-import '../public/scss/main.scss'
-import '../public/css/styles.css'
+import { Metadata } from 'next';
+import Image from 'next/image';
+import 'public/scss/main.scss';
+import 'public/css/styles.css';
+import { SITE_METADATA, SITE_OWNER } from 'constants/site';
 
 export const metadata: Metadata = {
-  title: siteMetadata.title,
-  description: siteMetadata.description,
+  title: SITE_METADATA.title,
+  description: SITE_METADATA.description,
   openGraph: {
-    title: siteMetadata.title,
-    description: siteMetadata.description,
+    title: SITE_METADATA.title,
+    description: SITE_METADATA.description,
     type: 'website',
-    siteName: siteMetadata.title,
-    url: siteMetadata.siteUrl,
+    siteName: SITE_METADATA.title,
+    url: SITE_METADATA.url,
     images: [
       {
-        url: siteMetadata.avatarAbsoluteUrl,
-        type: 'image/jpeg',
-      },
-    ],
+        url: SITE_METADATA.avatarUrl,
+        type: 'image/jpeg'
+      }
+    ]
   },
   twitter: {
     card: 'summary',
-    title: siteMetadata.title,
-    description: siteMetadata.description,
-    images: siteMetadata.avatarAbsoluteUrl,
-  },
-}
+    title: SITE_METADATA.title,
+    description: SITE_METADATA.description,
+    images: SITE_METADATA.avatarUrl
+  }
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={siteMetadata.siteLanguage}>
-      <body style={{ backgroundColor: siteMetadata.backgroundColor }}>
+    <html lang="ja">
+      <body style={{ backgroundColor: '#283941' }}>
         <header id="header">
           <div className="inner">
             <a href="#" className="image avatar">
-              <Image
-                src={siteMetadata.avatarAbsoluteUrl}
-                width={100}
-                height={100}
-                alt={siteMetadata.user.name}
-              />
+              <Image src={SITE_METADATA.avatarUrl} width={100} height={100} alt={SITE_OWNER.name} />
             </a>
             <h1>
-              <strong>{siteMetadata.title}</strong>
+              <strong>{SITE_METADATA.title}</strong>
             </h1>
           </div>
           <div id="footer">
             <div className="inner">
               <ul className="icons">
                 <li>
-                  <a
-                    href={`https://github.com/${siteMetadata.user.github}`}
-                    className="icon fa-github"
-                  >
+                  <a href={SITE_OWNER.githubUrl} className="icon fa-github">
                     <span className="label">GitHub</span>
                   </a>
                 </li>
                 <li>
-                  <a
-                    href={siteMetadata.contactUrl}
-                    className="icon fa-envelope-o"
-                  >
+                  <a href={SITE_OWNER.contactUrl} className="icon fa-envelope-o">
                     <span className="label">Contact</span>
                   </a>
                 </li>
@@ -81,5 +66,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }

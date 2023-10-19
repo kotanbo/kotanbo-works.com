@@ -1,10 +1,12 @@
-import { siteMetadata } from './constants'
+import { GithubItems } from 'components/github-items';
+import { QiitaItems } from 'components/qiita-items';
+import { SITE_OWNER } from 'constants/site';
 
-export default function Home() {
+export default async function Home() {
   return (
     <div id="main">
       <section id="about">
-        <h2>About {siteMetadata.user.name}</h2>
+        <h2>About {SITE_OWNER.name}</h2>
         <p>主に和歌山で活動しているフリーランスのエンジニアです。</p>
         <p>
           組み込み（携帯電話）、Web
@@ -17,6 +19,11 @@ export default function Home() {
           サービス、アプリを作ろうと思ったりする今日この頃ですが、機械学習に興味が湧き、数学の勉強をやり直しています。
         </p>
       </section>
+      <GithubItems />
+      <QiitaItems />
+      <section id="gallery">
+        <h2>Recent Nomad</h2>
+      </section>
     </div>
-  )
+  );
 }
