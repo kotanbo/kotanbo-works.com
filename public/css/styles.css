@@ -10,7 +10,4 @@ h6 {
   color: #fff;
 }
 
-/* Next.js に合うように public/scss/main.scss の内容を修正 */
-#header {
-  background-image: url('/scss/images/overlay.png'), url('/images/bg.jpg');
 }
