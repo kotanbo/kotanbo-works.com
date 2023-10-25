@@ -4,7 +4,7 @@
 
 ### Develop the site locally
 
-Add the `GH_API_TOKEN` and `QIITA_API_TOKEN` to `.env`.
+Add the `GH_API_TOKEN` and `QIITA_API_TOKEN` to `.env.local`.
 
 ```
 GH_API_TOKEN="xxxxxxxxxx"
