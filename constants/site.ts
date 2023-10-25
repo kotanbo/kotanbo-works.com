@@ -1,12 +1,12 @@
 export const SITE_METADATA = {
   title: 'KOTANBO WORKS',
   description: '主に和歌山で活動しているフリーランスのエンジニアです。',
-  url: 'https://kotanbo-works.com',
-  avatarUrl: 'images/avatar.jpg'
+  url: 'https://kotanbo-works.com'
 };
 
 export const SITE_OWNER = {
   name: 'KOTANBO WORKS',
+  avatarUrl: 'images/avatar.jpg',
   githubUrl: 'https://github.com/kotanbo',
   qiitaUrl: 'https://qiita.com/kotanbo',
   contactUrl:

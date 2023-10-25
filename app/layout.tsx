@@ -5,26 +5,20 @@ import 'public/css/styles.css';
 import { SITE_METADATA, SITE_OWNER } from 'constants/site';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.PUBLIC_URL ?? 'http://localhost:3000'),
   title: SITE_METADATA.title,
   description: SITE_METADATA.description,
   openGraph: {
+    type: 'website',
+    url: SITE_METADATA.url,
     title: SITE_METADATA.title,
     description: SITE_METADATA.description,
-    type: 'website',
-    siteName: SITE_METADATA.title,
-    url: SITE_METADATA.url,
-    images: [
-      {
-        url: SITE_METADATA.avatarUrl,
-        type: 'image/jpeg'
-      }
-    ]
+    siteName: SITE_METADATA.title
   },
   twitter: {
     card: 'summary',
     title: SITE_METADATA.title,
-    description: SITE_METADATA.description,
-    images: SITE_METADATA.avatarUrl
+    description: SITE_METADATA.description
   }
 };
 
@@ -35,10 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header id="header">
           <div className="inner">
             <a href="#" className="image avatar">
-              <Image src={SITE_METADATA.avatarUrl} width={100} height={100} alt={SITE_OWNER.name} />
+              <Image src={SITE_OWNER.avatarUrl} alt={SITE_OWNER.name} width={100} height={100} />
             </a>
             <h1>
-              <strong>{SITE_METADATA.title}</strong>
+              <strong>{SITE_OWNER.name}</strong>
             </h1>
           </div>
           <div id="footer">
