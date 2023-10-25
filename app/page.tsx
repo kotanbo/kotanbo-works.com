@@ -1,3 +1,4 @@
+import { Gallery } from 'components/gallery';
 import { GithubItems } from 'components/github-items';
 import { QiitaItems } from 'components/qiita-items';
 import { SITE_OWNER } from 'constants/site';
@@ -23,6 +24,7 @@ export default async function Home() {
       <QiitaItems />
       <section id="gallery">
         <h2>Recent Nomad</h2>
+        <Gallery />
       </section>
     </div>
   );
