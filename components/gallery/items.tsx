@@ -13,7 +13,7 @@ export function GalleryItems({ images }: { images: { src: string; alt: string }[
     e.preventDefault();
     const index = parseInt(e.currentTarget.dataset.index ?? '0');
     setSelectedIndex(index);
-    carouselDialog.current?.showModal();
+    setTimeout(() => carouselDialog.current?.showModal(), 500);
   }, []);
   const onClickCloseCarouselDialog = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -47,13 +47,13 @@ export function GalleryItems({ images }: { images: { src: string; alt: string }[
       </div>
       <dialog
         ref={carouselDialog}
-        style={{ width: '100vw', height: '100vh', backgroundColor: 'rgba(40, 57, 65, 0.8)' }}
+        style={{ width: '100vw', height: '100vh', backgroundColor: 'rgba(40, 67, 85, 0.8)' }}
       >
         <span
           onClick={onClickCloseCarouselDialog}
           style={{ display: 'flex', justifyContent: 'end', marginBottom: 20, cursor: 'pointer' }}
         >
-          <i className="fa fa-times fa-lg"></i>
+          <i className="fa fa-close fa-2x"></i>
         </span>
         <Carousel
           showArrows={true}
