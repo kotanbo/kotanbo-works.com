@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { MouseEvent, useCallback, useRef, useState } from 'react';
+import { MouseEvent, useRef, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 
@@ -9,12 +9,12 @@ export function GalleryItems({ images }: { images: { src: string; alt: string }[
   const [selectedIndex, setSelectedIndex] = useState(0);
   const carouselDialog = useRef<HTMLDialogElement>(null);
 
-  const onClickImage = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
+  const onClickImage = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const index = parseInt(e.currentTarget.dataset.index ?? '0');
     setSelectedIndex(index);
     setTimeout(() => carouselDialog.current?.showModal(), 500);
-  }, []);
+  };
   const onClickCloseCarouselDialog = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     carouselDialog.current?.close();
